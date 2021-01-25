@@ -4,8 +4,10 @@
 @include('header')
   <div class="top-page">
     <div class="top_title">
-      <form action="{{url('/inputs')}}" method="POST">
+      <form action="{{url('/input_data')}}" method="POST">
+        {{ csrf_field() }}
         <h1>お薬登録画面</h1>
+        {{$today = \Carbon\Carbon::today()}}
         <h2>お薬の名前 <input type="text" name="medicine_name" value="薬の名前"></h2>
         <h2>頻度 
           <select name='sometime' input type="date">

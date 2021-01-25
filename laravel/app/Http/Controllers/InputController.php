@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Models\Sometime;
 
 class InputController extends Controller
 {
@@ -11,18 +14,24 @@ class InputController extends Controller
         return view('input');
     }
 
-    // public function input(Request $request)
-    // {
-    //     $medicine_name = $request->input('medicine_name');
-    //     $count = $request->input('count');
-    //     $time_to = $request->input('$i');
+    public function inputData(Request $request)
+    {
+        $new_data = new Sometime;
+        $new_data->medicine_name = $request->input('medicine_name');
+        $new_data->interval_time = $request->input('count');
+        $new_data->next_time = $request->input('time_to');
 
-    //     try {
-    //         $sometimes = Sometime::SearchBySometime()->get();
+        dd($new_data->interval_time);
 
-    //         $ = new $sometime
-    //     }
+        //$new_data->user_id
 
-    //     return view('input');
-    // }
+
+        /* try {
+            $sometimes = Sometime::SearchBySometime()->get();
+
+            $ = new $sometime
+        } */
+
+        return view('input');
+    }
 }

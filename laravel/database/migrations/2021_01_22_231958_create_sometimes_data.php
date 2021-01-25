@@ -16,6 +16,7 @@ class CreateSometimesData extends Migration
         Schema::create('sometimes_data', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->Integer('user_id');
+            $table->String('medicine_name');
             $table->date('next_time');
             $table->date('interval_time');
             $table->timestamps();
