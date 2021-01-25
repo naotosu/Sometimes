@@ -18,12 +18,11 @@ class InputController extends Controller
     {
         $new_data = new Sometime;
         $new_data->medicine_name = $request->input('medicine_name');
-        $new_data->interval_time = $request->input('count');
+        $new_data->interval_time = $request->input('sometime');
+        /* TODO $carbon->addDays(2) これを使って更新する */
         $new_data->next_time = $request->input('time_to');
-
-        dd($new_data->interval_time);
-
-        //$new_data->user_id
+        $new_data->user_id = 1;
+        $new_data->save;
 
 
         /* try {
