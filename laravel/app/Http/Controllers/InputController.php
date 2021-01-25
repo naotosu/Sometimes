@@ -11,7 +11,9 @@ class InputController extends Controller
 {
     public function inputView()
     {
-        return view('input');
+        $sometimes = Sometime::SearchBySometime(/* $user_id */)->get();
+        dd($sometimes);
+        return view('input', compact('sometimes'));
     }
 
     public function inputData(Request $request)

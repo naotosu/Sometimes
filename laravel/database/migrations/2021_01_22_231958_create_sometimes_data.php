@@ -17,7 +17,7 @@ class CreateSometimesData extends Migration
             $table->bigIncrements('id');
             $table->Integer('user_id');
             $table->String('medicine_name');
-            $table->date('next_time');
+            $table->datetime('next_time');
             $table->Integer('interval_time');
             $table->timestamps();
         });
