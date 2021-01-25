@@ -23,12 +23,12 @@
           </select></h2>
         <h2>飲む時間 <!-- TODO 0：00〜30分刻みで選択出来る様にしたい　-->
           <select name="time_to" input type="date">
-            <option value='6:00'>6:00</option>
-            <option value='8:00'>8:00</option>
-            <option value='12:00'>12:00</option>
-            <option value='13:00'>13:00</option>
-            <option value='18:00'>18:00</option>
-            <option value='20:00'>20:00</option>
+            <option value='{{$today->addHours(6)}}'>6:00</option>
+            <option value='{{$today->addHours(8)}}'>8:00</option>
+            <option value='{{$today->addHours(12)}}'>12:00</option>
+            <option value='{{$today->addHours(13)}}'>13:00</option>
+            <option value='{{$today->addHours(18)}}'>18:00</option>
+            <option value='{{$today->addHours(20)}}'>20:00</option>
             <!-- @for ($i = 0; $i < 96; $i++)
               <option>value='{{$i}}' date("H:i", strtotime("+". $i * 30 ." minute"))}}</option>
             @endfor -->

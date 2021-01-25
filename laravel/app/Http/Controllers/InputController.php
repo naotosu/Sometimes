@@ -20,9 +20,11 @@ class InputController extends Controller
         $new_data->medicine_name = $request->input('medicine_name');
         $new_data->interval_time = $request->input('sometime');
         /* TODO $carbon->addDays(2) これを使って更新する */
-        $new_data->next_time = $request->input('time_to');
+        $time_to_get = $request->input('time_to');
+        $now = \Carbon\Carbon::now();
+        $new_data->next_time = $time_to_get;
         $new_data->user_id = 1;
-        $new_data->save;
+        $new_data->save();
 
 
         /* try {

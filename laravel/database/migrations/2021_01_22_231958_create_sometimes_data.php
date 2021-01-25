@@ -13,12 +13,12 @@ class CreateSometimesData extends Migration
      */
     public function up()
     {
-        Schema::create('sometimes_data', function (Blueprint $table) {
+        Schema::create('sometimes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->Integer('user_id');
             $table->String('medicine_name');
             $table->date('next_time');
-            $table->date('interval_time');
+            $table->Integer('interval_time');
             $table->timestamps();
         });
     }
