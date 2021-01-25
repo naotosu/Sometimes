@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Sometime extends Model
 {
     use HasFactory;
+
+    public function scopeSearchBySometime($query)
+    {
+        return $query;
+    }
 }

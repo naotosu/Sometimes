@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\TopController@index');
 
+Route::get('/input', 'App\Http\Controllers\InputController@inputView');
+
+Route::post('/input_data', 'App\Http\Controllers\InputController@inputData');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
