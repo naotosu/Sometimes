@@ -21,7 +21,7 @@ class InputController extends Controller
         $new_data = new Sometime;
         $new_data->medicine_name = $request->input('medicine_name');
         $new_data->interval_time = $request->input('sometime');
-        $time_to = $request->input('time_to');
+        $time_to = new Carbon($request->input('time_to'));
         $now = \Carbon\Carbon::now();
 
         if ($time_to <= $now) {
@@ -29,7 +29,7 @@ class InputController extends Controller
         }
 
         $new_data->next_time = $time_to;
-        $new_data->user_id = 2;
+        $new_data->user_id = 4;
         $new_data->save();
 
 
