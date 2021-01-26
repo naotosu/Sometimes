@@ -9,6 +9,8 @@ class Sometime extends Model
 {
     use HasFactory;
 
+    protected $table = 'sometimes';
+
     public function scopeSearchBySometime($query)
     {
         return $query;

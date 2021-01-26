@@ -12,7 +12,6 @@ class InputController extends Controller
     public function inputView()
     {
         $sometimes = Sometime::SearchBySometime(/* $user_id */)->get();
-        dd($sometimes);
         return view('input', compact('sometimes'));
     }
 
@@ -29,7 +28,7 @@ class InputController extends Controller
         }
 
         $new_data->next_time = $time_to;
-        $new_data->user_id = 4;
+        $new_data->user_id = 5;
         $new_data->save();
 
 
@@ -39,6 +38,7 @@ class InputController extends Controller
             $ = new $sometime
         } */
 
-        return view('input');
+        $sometimes = Sometime::SearchBySometime(/* $user_id */)->get();
+        return view('input', compact('sometimes'));
     }
 }

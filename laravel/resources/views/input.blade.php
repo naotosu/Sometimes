@@ -32,8 +32,30 @@
           </h2>
         <h2><input type="submit" value="登録"></h2>
       </form>
+      <table border="1">
+        <tr>
+          <th>ユーザーID</th>
+          <th>お薬の名前</th>
+          <th>次に飲む時間</th>
+          <th>飲む頻度</th>
+        </tr>
+        @foreach ($sometimes as $sometime)
+        <tr>
+          <td>{{$sometime->user_id}}</td>
+          <td>{{$sometime->medicine_name}}</td>
+          <td>{{$sometime->next_time}}</td>
+          <td>
+            @if ($sometime->interval_time == 1)
+              {{'毎日'}}
+            @elseif ($sometime->interval_time == 7)
+              {{'一週間に一度'}}
+            @else
+              {{$sometime->interval_time}}日に一度</td>
+            @endif
+        </tr>
+        @endforeach
+      </table>
     </div>
   </div>
-
 @include('footer')
 @endsection
