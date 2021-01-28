@@ -41,4 +41,10 @@ class InputController extends Controller
         $sometimes = Sometime::SearchBySometime(/* $user_id */)->get();
         return view('input', compact('sometimes'));
     }
+
+    public function deleteExecute(Request $request)
+    {
+        $id = $request->input('id');
+        dd($id);
+    }
 }
