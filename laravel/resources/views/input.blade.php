@@ -3,6 +3,11 @@
 @section('content')
 @include('header')
   <div class="top-page">
+    @if (session('flash_message'))
+      <div class="flash_message">
+          {{ session('flash_message') }}
+      </div>
+    @endif
     <div class="top_title">
       <form action="{{url('/input_data')}}" method="POST">
         {{ csrf_field() }}
@@ -40,6 +45,7 @@
           <th>お薬の名前</th>
           <th>次に飲む時間</th>
           <th>飲む頻度</th>
+          <th>消去</th>
         </tr>
         @foreach ($sometimes as $sometime)
         <tr>
@@ -54,6 +60,15 @@
             @else
               {{$sometime->interval_time}}日に一度</td>
             @endif
+          <td>
+            <div class="input_data">
+                <form action="{{url('/delete')}}" method="POST" class="input_data">
+                {{ csrf_field() }}
+                <input type="text" name="id" value="{{ $sometime->id }}" readonly>
+            </div>
+                <input type="submit" value="消去">
+            </form>
+            </td>
         </tr>
         @endforeach
       </table>

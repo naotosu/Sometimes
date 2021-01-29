@@ -19,6 +19,8 @@ Route::get('/input', 'App\Http\Controllers\InputController@inputView');
 
 Route::post('/input_data', 'App\Http\Controllers\InputController@inputData');
 
+Route::post('/delete', 'App\Http\Controllers\InputController@deleteExecute');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

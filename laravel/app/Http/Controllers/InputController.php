@@ -41,4 +41,20 @@ class InputController extends Controller
         $sometimes = Sometime::SearchBySometime(/* $user_id */)->get();
         return view('input', compact('sometimes'));
     }
+
+    public function deleteExecute(Request $request)
+    {
+        $id = $request->input('id');
+        
+        try {
+            $sometime = Sometime::find($id);
+            $sometime->delete();
+        } catch (\Exception $e) {
+            report($e);
+            session()->flash('flash_message', '消去を中断しました');
+            return redirect('/input');
+        }
+        session()->flash('flash_message', '消去完了しました');
+        return redirect('input');
+    }
 }
