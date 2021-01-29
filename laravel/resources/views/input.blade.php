@@ -3,6 +3,11 @@
 @section('content')
 @include('header')
   <div class="top-page">
+    @if (session('flash_message'))
+      <div class="flash_message">
+          {{ session('flash_message') }}
+      </div>
+    @endif
     <div class="top_title">
       <form action="{{url('/input_data')}}" method="POST">
         {{ csrf_field() }}

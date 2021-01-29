@@ -45,6 +45,16 @@ class InputController extends Controller
     public function deleteExecute(Request $request)
     {
         $id = $request->input('id');
-        dd($id);
+        
+        try {
+            $sometime = Sometime::find($id);
+            $sometime->delete();
+        } catch (\Exception $e) {
+            report($e);
+            session()->flash('flash_message', '消去を中断しました');
+            return redirect('/input');
+        }
+        session()->flash('flash_message', '消去完了しました');
+        return redirect('input');
     }
 }
