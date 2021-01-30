@@ -11,8 +11,12 @@ class Sometime extends Model
 
     protected $table = 'sometimes';
 
-    public function scopeSearchBySometime($query)
+    public function scopeSearchBySometime($query, $my_id)
     {
+        if (isset($my_id)) {
+            $query->where('user_id', $my_id);
+        }
+
         return $query;
     }
 }
