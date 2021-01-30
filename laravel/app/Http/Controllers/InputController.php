@@ -24,7 +24,6 @@ class InputController extends Controller
             session()->flash('flash_message', '使用する為には、ユーザー登録、ログインして下さい');
             $sometimes = null;
             $my_id = null;
-            return view('input', compact('sometimes', 'my_id'));
         }
 
         return view('input', compact('sometimes', 'my_id'));
