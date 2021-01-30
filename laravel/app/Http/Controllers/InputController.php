@@ -12,8 +12,20 @@ class InputController extends Controller
 {
     public function inputView()
     {
-        $my_id = Auth::user()->id;
-        $sometimes = Sometime::SearchBySometime($my_id)->get();
+        try {
+            $my_id = Auth::user()->id;
+
+            if (isset($my_id)) {
+                $sometimes = Sometime::SearchBySometime($my_id)->get();
+            }
+            
+        } catch (\Exception $e) {
+            report($e);
+            session()->flash('flash_message', '使用する為には、ID登録、ログインして下さい');
+            $sometimes = null;
+            $my_id = null;
+            return view('input', compact('sometimes', 'my_id'));
+        }
 
         return view('input', compact('sometimes', 'my_id'));
     }

@@ -12,7 +12,7 @@
       <form action="{{url('/input_data')}}" method="POST">
         {{ csrf_field() }}
         <h2>お薬登録画面</h2>        
-        @if ( $my_id = null )
+        @if ( $my_id == null )
           <h2>ユーザー登録し、ログインして下さい</h2>
         @else
           <div class="input_data">
