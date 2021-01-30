@@ -24,7 +24,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('command:send_mail')
+                 ->appendOutputTo(dirname(dirname(dirname(__FILE__))) . '/storage/logs/SampleSchedule.log')
+                 ->onSuccess(function () {
+                     Log::info('成功');
+                 })
+                 ->onFailure(function () {
+                     Log::error('エラー');
+                 });
     }
 
     /**

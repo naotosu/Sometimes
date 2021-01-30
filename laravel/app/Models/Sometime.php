@@ -19,4 +19,12 @@ class Sometime extends Model
 
         return $query;
     }
+
+    public function scopeSearchBySometimeThis($query, $now)
+    {
+
+        $query->where('next_time', $now);
+
+        return $query;
+    }
 }
