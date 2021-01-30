@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use App\Models\User;
 use App\Models\Sometime;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MedicineMail;
 
 class SendMail extends Command
 {
@@ -58,12 +60,9 @@ class SendMail extends Command
                 }
             }
 
-            dd($mail_to);
-
-            Mail::to($mail_to)->send( new AutoDeliverySystemNotification($mail_text) );
+            $medicine = $sometime->medicine;
+            Mail::to($mail_to)->send( new MedicineMail($user_name, $medicine) );
 
         }
-
-        AutoDeliveryService::DeliveryExecute($ship_date, $order_indexes);
     }
 }
