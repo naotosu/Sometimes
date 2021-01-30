@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 
 use Illuminate\Http\Request;
@@ -11,8 +12,10 @@ class InputController extends Controller
 {
     public function inputView()
     {
-        $sometimes = Sometime::SearchBySometime(/* $user_id */)->get();
-        return view('input', compact('sometimes'));
+        $my_id = Auth::user()->id;
+        $sometimes = Sometime::SearchBySometime($my_id)->get();
+
+        return view('input', compact('sometimes', 'my_id'));
     }
 
     public function inputData(Request $request)
@@ -28,7 +31,7 @@ class InputController extends Controller
         }
 
         $new_data->next_time = $time_to;
-        $new_data->user_id = 5;
+        $new_data->user_id = 1;
         $new_data->save();
 
 
