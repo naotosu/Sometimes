@@ -48,9 +48,19 @@ class SendMail extends Command
         
         $sometimes = sometime::SearchBySometimeThis($now)->get();
         $users = \DB::table('users')->get();
-        dd($users);
 
         foreach ($sometimes as $sometime) {
+
+            foreach ($users as $user) {
+                if ( $sometime->user_id == $user->id) {
+                    $mail_to = $user->email;
+                    $user_name = $user->name;
+                }
+            }
+
+            dd($mail_to);
+
+            Mail::to($mail_to)->send( new AutoDeliverySystemNotification($mail_text) );
 
         }
 
