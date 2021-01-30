@@ -21,7 +21,7 @@ class InputController extends Controller
             
         } catch (\Exception $e) {
             report($e);
-            session()->flash('flash_message', '使用する為には、ID登録、ログインして下さい');
+            session()->flash('flash_message', '使用する為には、ユーザー登録、ログインして下さい');
             $sometimes = null;
             $my_id = null;
             return view('input', compact('sometimes', 'my_id'));
