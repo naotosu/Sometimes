@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,7 +25,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('command:send_mail')
+                 ->appendOutputTo(dirname(dirname(dirname(__FILE__))) . '/storage/logs/laravel.log')
+                 ->hourly()
+                 ->onSuccess(function () {
+                     Log::info('成功');
+                 })
+                 ->onFailure(function () {
+                     Log::error('エラー');
+                 });
     }
 
     /**
