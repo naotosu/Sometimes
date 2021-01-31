@@ -10,6 +10,7 @@ class Sometime extends Model
     use HasFactory;
 
     protected $table = 'sometimes';
+    protected $dates = ['next_time'];
 
     public function scopeSearchBySometime($query, $my_id)
     {

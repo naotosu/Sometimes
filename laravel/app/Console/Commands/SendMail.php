@@ -42,28 +42,41 @@ class SendMail extends Command
      */
     public function handle()
     {
-        
-        $now = \Carbon\Carbon::now();
+        try {
 
-        //テスト用
-        $now = '2021-01-31 20:00:00';
-        
-        $sometimes = sometime::SearchBySometimeThis($now)->get();
-        $users = \DB::table('users')->get();
+            $now = \Carbon\Carbon::now();
 
-        foreach ($sometimes as $sometime) {
+            //テスト用
+            $now = '2021-01-31 20:00:00';
+            
+            $sometimes = sometime::SearchBySometimeThis($now)->get();
+            $users = \DB::table('users')->get();
 
-            foreach ($users as $user) {
-                if ( $sometime->user_id == $user->id) {
-                    $mail_to = $user->email;
-                    $user_name = $user->name;
+            foreach ($sometimes as $sometime) {
+
+                foreach ($users as $user) {
+                    if ( $sometime->user_id == $user->id) {
+                        $mail_to = $user->email;
+                        $user_name = $user->name;
+                    }
                 }
+
+                $medicine = $sometime->medicine_name;
+
+                Mail::to($mail_to)->send( new MedicineMail($user_name, $medicine) );
+
+                $next_time = $sometime->next_time->addDay($sometime->interval_time);
+
+                $sometime->next_time = $next_time;
+                $sometime->save();
+
+
             }
 
-            $medicine = $sometime->medicine_name;
-
-            Mail::to($mail_to)->send( new MedicineMail($user_name, $medicine) );
-
+        } catch (\Exception $e) {
+            report($e);
+            //TODO この処理でエラー出たら通知メール出す様にする？
+            //ロールバックはあえてしない
         }
     }
 }
