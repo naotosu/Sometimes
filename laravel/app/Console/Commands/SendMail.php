@@ -60,7 +60,8 @@ class SendMail extends Command
                 }
             }
 
-            $medicine = $sometime->medicine;
+            $medicine = $sometime->medicine_name;
+
             Mail::to($mail_to)->send( new MedicineMail($user_name, $medicine) );
 
         }
