@@ -43,11 +43,7 @@ class SendMail extends Command
     public function handle()
     {
         try {
-
             $now = \Carbon\Carbon::now();
-
-            //テスト用
-            $now = '2021-01-31 20:00:00';
             
             $sometimes = sometime::SearchBySometimeThis($now)->get();
             $users = \DB::table('users')->get();
@@ -70,12 +66,11 @@ class SendMail extends Command
                 $sometime->next_time = $next_time;
                 $sometime->save();
 
-
             }
 
         } catch (\Exception $e) {
             report($e);
-            //TODO この処理でエラー出たら通知メール出す様にする？
+            //TODO この処理でエラー出たら通知メール出す様にする可能性有り
             //ロールバックはあえてしない
         }
     }
