@@ -34,11 +34,15 @@
           <h3>飲む時間 <!-- TODO 0：00〜30分刻みで選択出来る様にしたい　-->
             <select name="time_to" input type="date">
               <option value='{{$today->addHours(6)}}'>6:00</option>
-              <option value='{{$today->addHours(2)}}'>8:00</option>
-              <option value='{{$today->addHours(4)}}'>12:00</option>
+              <option value='{{$today->addHours(1)}}'>7:00</option>
+              <option value='{{$today->addHours(1)}}'>8:00</option>
+              <option value='{{$today->addHours(3)}}'>11:00</option>
+              <option value='{{$today->addHours(1)}}'>12:00</option>
               <option value='{{$today->addHours(1)}}'>13:00</option>
-              <option value='{{$today->addHours(5)}}'>18:00</option>
-              <option value='{{$today->addHours(2)}}'>20:00</option>
+              <option value='{{$today->addHours(4)}}'>17:00</option>
+              <option value='{{$today->addHours(1)}}'>18:00</option>
+              <option value='{{$today->addHours(1)}}'>19:00</option>
+              <option value='{{$today->addHours(1)}}'>20:00</option>
             </h3>
           <h2><input type="submit" value="登録"></h2>
         </form>
