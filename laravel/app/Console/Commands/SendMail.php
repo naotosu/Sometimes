@@ -45,7 +45,7 @@ class SendMail extends Command
         try {
             $now = \Carbon\Carbon::now();
 
-            $now->second = 0;
+            $now->second = 0; //秒は無視してSELECT文を実行するため
             
             $sometimes = sometime::SearchBySometimeThis($now)->get();
             $users = \DB::table('users')->get();
