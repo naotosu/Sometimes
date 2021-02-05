@@ -48,7 +48,6 @@
         </form>
         <table border="1" align="center">
           <tr>
-            <th>ユーザーID</th>
             <th>お薬の名前</th>
             <th>次に飲む時間</th>
             <th>飲む頻度</th>
@@ -56,7 +55,6 @@
           </tr>
           @foreach ($sometimes as $sometime)
           <tr>
-            <td>{{$sometime->user_id}}</td>
             <td>{{$sometime->medicine_name}}</td>
             <td>{{$sometime->next_time}}</td>
             <td>
