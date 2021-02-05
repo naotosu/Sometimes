@@ -47,7 +47,23 @@ body {
   letter-spacing: 0.20em;
 }
 
+@media (max-width: 1000px / min-width: 671px)
+{
+  .header, .top-page {
+    width: 100%;
+  }
+}
 
+@media (max-width: 671px)
+{
+  .header, .top-page {
+    width: 100%;
+  }
+  .icon {
+    width: 7px;
+    font-size: 0.6rem;
+  }
+}
 
 .header-menus {
   margin-right: 10px;
