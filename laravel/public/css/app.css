@@ -47,26 +47,8 @@ body {
   letter-spacing: 0.20em;
 }
 
-@media (max-width: 1000px / min-width: 671px)
-{
-  .header, .top-page {
-    width: 100%;
-  }
-}
-
-@media (max-width: 671px)
-{
-  .header, .top-page {
-    width: 100%;
-  }
-  .icon {
-    width: 7px;
-    font-size: 0.6rem;
-  }
-}
-
 .header-menus {
-  margin-right: 10px;
+  margin: 15px 20px;
   float: left;
 }
 
@@ -185,6 +167,37 @@ body {
 
 .top-page h1 {
   font-size: 58px;
+}
+
+@media (max-width: 1000px / min-width: 671px)
+{
+  .header, .top-page {
+    
+  }
+}
+
+@media (max-width: 671px)
+{
+  .header, .top-page {
+    width: 100%;
+  }
+  .icon {
+    font-size: 0.3rem;
+    padding: 15px 1px;
+    margin: 0px 2px;
+  }
+  .top_title h1{
+    font-size: 20px;
+  }
+  .top_title h2{
+    font-size: 14px;
+  }
+    .header-menus {
+    margin: 15px 2px;
+  }
+  .header-right {
+    margin: 15px 2px;
+  }
 }
 
 .under_arrow {
