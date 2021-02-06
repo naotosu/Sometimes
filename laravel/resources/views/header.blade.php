@@ -2,19 +2,12 @@
 
       <div class="header">
         <div class="header-menus">
-
-          <ul>
             <div class="icon">
-            <li>
               <a href="{{ url('/') }}">TOP</a>
-            </li>
             </div>
             <div class="icon">
-            <li>
               <a href="{{ url('/input') }}">お薬登録</a>
-            </li>
             </div>
-          </ul>
         </div>
             
         <div class="header-right">
